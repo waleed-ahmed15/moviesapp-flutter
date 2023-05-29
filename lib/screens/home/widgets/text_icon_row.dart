@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moviesapp/screens/watch_tab/watch_tab_page_controller.dart';
 import 'package:moviesapp/utils/text_styles.dart';
 
 class Watch_Search_Row extends StatelessWidget {
@@ -14,7 +15,20 @@ class Watch_Search_Row extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            globalCurrentIndexForWatchTab = 1;
+            globalPageControllerForWatchTab.animateToPage(
+              1,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.ease,
+            );
+            // globalPageControllerForWatchTab.positions.last.animateTo(
+            //   1.sw,
+            //   duration: const Duration(milliseconds: 100),
+            //   curve: Curves.ease,
+            // );
+            // print('object');
+          },
           icon: const Icon(Icons.search),
         ),
       ],

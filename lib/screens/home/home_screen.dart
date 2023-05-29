@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moviesapp/screens/watch_tab/watch_tab_page_controller.dart';
+import 'package:moviesapp/screens/watch_tab/watch_tab_pages.dart';
 import 'package:moviesapp/utils/app_colors.dart';
-
-import '../watch_tab/watch_tab_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,16 +24,25 @@ class _HomeScreenState extends State<HomeScreen> {
     Icons.folder,
     Icons.menu,
   ];
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if (index == 1 && globalCurrentIndexForWatchTab != 0) {
+        globalCurrentIndexForWatchTab = 0;
+        globalPageControllerForWatchTab.animateToPage(
+          globalCurrentIndexForWatchTab,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.ease,
+        );
+      }
+      print(globalCurrentIndexForWatchTab);
     });
   }
 
   final List<Widget> Screens = <Widget>[
     const Text('Dashboard'),
-    const WatchTabScreen(),
+    const WatchTabPages(),
     const Text('Media Library'),
     const Text('More'),
   ];
