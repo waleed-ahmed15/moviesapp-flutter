@@ -68,7 +68,7 @@ class _WatchTabGenreScreenState extends State<WatchTabGenreScreen> {
                   ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
                 ),
               ),
