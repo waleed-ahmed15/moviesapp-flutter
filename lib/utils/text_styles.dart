@@ -14,3 +14,9 @@ final TextStyle title_text_Style = TextStyle(
     color: Colors.black,
     height: 20.sp / 16.sp,
     fontWeight: FontWeight.w500);
+final TextStyle hint_text_Style = TextStyle(
+    fontFamily: 'Poppins Regular',
+    fontSize: 14.sp,
+    color: const Color(0xff02c434d).withOpacity(0.3),
+    height: 20.sp / 16.sp,
+    fontWeight: FontWeight.w400);
