@@ -19,9 +19,11 @@ class SearchResultScreen extends StatelessWidget {
               height: 35.h,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 20.w,
+                  width: 10.w,
                 ),
                 IconButton(
                   onPressed: () {
@@ -39,14 +41,14 @@ class SearchResultScreen extends StatelessWidget {
                     size: 20.h,
                   ),
                 ),
-                SizedBox(
-                  width: 26.w,
-                ),
-                Text(
-                  '${MoviesController.searchMovies.length} Results Found',
-                  style: title_text_Style.copyWith(
-                    letterSpacing: 1,
-                    color: const Color(0xff202C43),
+                Padding(
+                  padding: EdgeInsets.only(top: 3.0.w),
+                  child: Text(
+                    '${MoviesController.searchMovies.length} Results Found',
+                    style: title_text_Style.copyWith(
+                      letterSpacing: 1,
+                      color: const Color(0xff202C43),
+                    ),
                   ),
                 )
               ],

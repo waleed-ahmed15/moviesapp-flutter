@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:moviesapp/controllers/movies_controller.dart';
 import 'package:moviesapp/screens/home/widgets/text_icon_row.dart';
+import 'package:moviesapp/screens/movies_details/movie_details_screen.dart';
 import 'package:moviesapp/utils/app_colors.dart';
 import 'package:moviesapp/utils/text_styles.dart';
 
@@ -40,45 +41,58 @@ class WatchTabScreen extends StatelessWidget {
                   ),
                   itemCount: MoviesController.upcomingMovies.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 180.h,
-                      width: 335.w,
-                      margin: EdgeInsets.only(bottom: 20.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://image.tmdb.org/t/p/w500${MoviesController.upcomingMovies[index]['poster_path']}'),
-                            fit: BoxFit.cover,
-                          )),
+                    return GestureDetector(
+                      onTap: () async {
+                        await Get.find<MoviesController>().getMovieDetails(
+                            MoviesController.upcomingMovies[index]['id']
+                                .toString());
+                        Get.to(
+                          () => const MovieDetailsScreen(
+                              // movie: MoviesController.upcomingMovies[index],
+                              ),
+                        );
+                      },
                       child: Container(
+                        height: 180.h,
+                        width: 335.w,
+                        margin: EdgeInsets.only(bottom: 20.h),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black38,
-                              Colors.black
+                            borderRadius: BorderRadius.circular(10.r),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://image.tmdb.org/t/p/w500${MoviesController.upcomingMovies[index]['poster_path']}'),
+                              fit: BoxFit.cover,
+                            ),),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.r),
+                            gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                Colors.black38,
+                                Colors.black
+                              ],
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Spacer(),
+                              Container(
+                                margin:
+                                    EdgeInsets.only(left: 10.w, bottom: 10.h),
+                                child: Text(
+                                  MoviesController.upcomingMovies[index]
+                                      ['original_title'],
+                                  style: title_text_Style.copyWith(
+                                      color: Colors.white),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ],
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Spacer(),
-                            Container(
-                              margin: EdgeInsets.only(left: 10.w, bottom: 10.h),
-                              child: Text(
-                                MoviesController.upcomingMovies[index]
-                                    ['original_title'],
-                                style: title_text_Style.copyWith(
-                                    color: Colors.white),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     );

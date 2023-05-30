@@ -9,6 +9,8 @@ class MoviesController extends GetxController {
   static List<dynamic> upcomingMovies = [];
   static bool isLoadingUpcommingMovies = true;
   static List<dynamic> searchMovies = [];
+  static Map<String, dynamic> currentMovieDetails = {};
+  static bool isLoadingMovieDetails = true;
 
   @override
   void onInit() {
@@ -77,6 +79,34 @@ class MoviesController extends GetxController {
       print('failed to get upcomming movies');
       print(e);
       // return true;
+    }
+  }
+
+  //get movie details by movie Id;
+  Future<void> getMovieDetails(String movieId) async {
+    try {
+      Uri url = Uri.parse('${AppConstants.baseURL}/3/movie/$movieId');
+      var response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': AppConstants.token
+        },
+      );
+      if (response.statusCode == 200) {
+        print('success');
+        print(response.body);
+        currentMovieDetails.clear();
+        currentMovieDetails = jsonDecode(response.body);
+        print(currentMovieDetails['original_title']);
+      } else {
+        print('failed');
+        print(response.body);
+        // return true;
+      }
+    } catch (e) {
+      print('failed to get movie details');
+      print(e);
     }
   }
 }
