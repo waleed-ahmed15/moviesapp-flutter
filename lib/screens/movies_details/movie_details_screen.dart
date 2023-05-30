@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:moviesapp/controllers/movies_controller.dart';
 import 'package:moviesapp/screens/movies_details/movie_trailer_screen.dart';
+import 'package:moviesapp/screens/seats_mapping/select_seats_screen.dart';
 import 'package:moviesapp/utils/app_colors.dart';
 import 'package:moviesapp/utils/text_styles.dart';
 
@@ -87,7 +88,9 @@ class MovieDetailsScreen extends StatelessWidget {
                     height: 15.h,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const SelectSeatScreen());
+                    },
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(243.w, 50.h),
                       backgroundColor: AppColors.light_blue,
