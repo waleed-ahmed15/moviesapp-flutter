@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:moviesapp/screens/seats_mapping/book_seat_screen.dart';
 import 'package:moviesapp/utils/app_colors.dart';
 import 'package:moviesapp/utils/text_styles.dart';
 
@@ -11,18 +13,26 @@ class SelectSeatScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 123.h,
+          toolbarHeight: 93.h,
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: const Color(0xff202C43),
-              size: 20.h,
-            ),
+          leading: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 10.h),
+                // color: Colors.red,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: const Color(0xff202C43),
+                    size: 25.h,
+                  ),
+                ),
+              ),
+            ],
           ),
           title: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -277,7 +287,9 @@ class SelectSeatScreen extends StatelessWidget {
               minimumSize: Size(323.w, 50.h),
             ),
             child: Text('Select Seats', style: button_text_Style),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const BookSeatScreen());
+            },
           ),
         ),
       ),
