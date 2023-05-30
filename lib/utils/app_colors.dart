@@ -10,4 +10,10 @@ class AppColors {
   static Color pinkColor = const Color(0xffE26CA5);
   static Color purpleColor = const Color(0xff564CA3);
   static Color yellowColor = const Color(0xffCD9D0F);
+  static List<Color> genreColors = [
+    const Color(0xff15D2BC),
+    const Color(0xffE26CA5),
+    const Color(0xff564CA3),
+    const Color(0xffCD9D0F)
+  ];
 }

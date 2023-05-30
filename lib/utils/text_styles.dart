@@ -33,3 +33,20 @@ final genre_text_Style = TextStyle(
   color: const Color(0xffDBDBDF),
   height: 1.5,
 );
+final button_text_Style = TextStyle(
+  fontFamily: 'Poppins SemiBold',
+  fontSize: 14.sp,
+  height: 20 / 14,
+);
+TextStyle details_genre_text_Style = TextStyle(
+  fontFamily: 'Poppins SemiBold',
+  fontSize: 12.sp,
+  color: Colors.white,
+  height: 1.5,
+);
+final details_overview_text_Style = TextStyle(
+    fontFamily: 'Poppins Regular',
+    fontSize: 12.sp,
+    color: const Color(0xff8F8F8F),
+    height: 1.5,
+    letterSpacing: 0.7);

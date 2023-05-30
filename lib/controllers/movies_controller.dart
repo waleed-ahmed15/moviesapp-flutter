@@ -99,6 +99,7 @@ class MoviesController extends GetxController {
         currentMovieDetails.clear();
         currentMovieDetails = jsonDecode(response.body);
         print(currentMovieDetails['original_title']);
+        print(currentMovieDetails['video']);
       } else {
         print('failed');
         print(response.body);
