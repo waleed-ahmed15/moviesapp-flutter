@@ -18,6 +18,7 @@ class _WatchTabSearchScreenState extends State<WatchTabSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           SizedBox(height: 24.h),
@@ -70,7 +71,6 @@ class _WatchTabSearchScreenState extends State<WatchTabSearchScreen> {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               decoration: BoxDecoration(
                 color: AppColors.lighter_grey,
-                borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,6 +97,7 @@ class _WatchTabSearchScreenState extends State<WatchTabSearchScreen> {
                           return Container(
                             margin: EdgeInsets.only(bottom: 10.h),
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   height: 100.h,
@@ -117,7 +118,7 @@ class _WatchTabSearchScreenState extends State<WatchTabSearchScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: 200,
+                                      width: 130.w,
                                       child: Text(
                                         MoviesController.searchMovies[index]
                                             ['original_title'],
@@ -135,6 +136,14 @@ class _WatchTabSearchScreenState extends State<WatchTabSearchScreen> {
                                     ),
                                   ],
                                 ),
+                                IconButton(
+                                    onPressed: () {
+                                      print('more');
+                                    },
+                                    icon: Icon(
+                                      Icons.more_horiz,
+                                      color: AppColors.light_blue,
+                                    )),
                               ],
                             ),
                           );

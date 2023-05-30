@@ -85,7 +85,7 @@ class _WatchTabGenreScreenState extends State<WatchTabGenreScreen> {
                     child: Row(
                       children: [
                         Container(
-                          width: 163.w,
+                          width: 162.w,
                           height: 100.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.r),
