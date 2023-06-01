@@ -364,38 +364,37 @@ class BookSeatScreen extends StatelessWidget {
                   SizedBox(
                     width: 10.w,
                   ),
-                  Container(
-                    height: 46,
-                    constraints: BoxConstraints(maxHeight: 46.w),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.light_grey.withOpacity(0.3),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                        fixedSize: Size(108.w, 50.h),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.light_grey.withOpacity(0.3),
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AutoSizeText(
-                            'Total Price',
-                            style: details_overview_text_Style.copyWith(
-                                color: Colors.black),
-                            maxLines: 1,
-                          ),
-                          AutoSizeText(
-                            '\$ 50',
-                            style: button_text_Style.copyWith(
-                                fontSize: 14.sp,
-                                color: Colors.black,
-                                fontFamily: 'Poppins Bold'),
-                          ),
-                        ],
-                      ),
-                      onPressed: () {},
+                      fixedSize: Size(108.w, 50.h),
+                      minimumSize: Size(108.w, 50.h),
                     ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        AutoSizeText(
+                          'Total Price',
+                          style: details_overview_text_Style.copyWith(
+                              color: Colors.black),
+                          maxLines: 1,
+                        ),
+                        AutoSizeText(
+                          '\$ 50',
+                          style: button_text_Style.copyWith(
+                              fontSize: 14.sp,
+                              color: Colors.black,
+                              fontFamily: 'Poppins Bold'),
+                          maxLines: 1,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {},
                   ),
                   SizedBox(
                     width: 10.w,
@@ -407,6 +406,7 @@ class BookSeatScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       fixedSize: Size(216.w, 50.h),
+                      // maximumSize: const Size(222, 222),
                     ),
                     child: Text('Proceed to pay', style: button_text_Style),
                     onPressed: () {},
