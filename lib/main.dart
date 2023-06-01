@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:moviesapp/screens/home/home_screen.dart';
+import 'package:moviesapp/screens/splash_screen/splash_screen.dart';
 import 'dependencies/dependencies.dart' as dep;
 
 void main() async {
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const HomeScreen(),
+          home: const SplashScreen(),
         );
       },
     );
