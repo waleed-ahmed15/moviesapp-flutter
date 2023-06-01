@@ -7,8 +7,6 @@ import 'package:moviesapp/screens/seats_mapping/select_seats_screen.dart';
 import 'package:moviesapp/utils/app_colors.dart';
 import 'package:moviesapp/utils/text_styles.dart';
 
-import '../watch_tab/watch_tab_page_controller.dart';
-
 class MovieDetailsScreen extends StatelessWidget {
   const MovieDetailsScreen({super.key});
 
@@ -49,13 +47,7 @@ class MovieDetailsScreen extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          globalCurrentIndexForWatchTab = 0;
-                          globalPageControllerForWatchTab.animateToPage(
-                            globalCurrentIndexForWatchTab,
-                            duration: const Duration(milliseconds: 100),
-                            curve: Curves.ease,
-                          );
-                          // Navigator.pop(context);
+                          Get.back();
                         },
                         icon: Icon(
                           Icons.arrow_back_ios,

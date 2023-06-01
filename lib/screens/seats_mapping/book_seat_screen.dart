@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -83,6 +84,7 @@ class BookSeatScreen extends StatelessWidget {
                 ),
               ),
               Container(
+                height: 230.h,
                 margin: EdgeInsets.only(left: 10.w),
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
@@ -92,10 +94,11 @@ class BookSeatScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(
                         10,
                         (index) => Container(
-                          margin: EdgeInsets.only(bottom: 10.w),
+                          // margin: EdgeInsets.only(bottom: 10.w),
                           child: Text(
                             '${index + 1}',
                             style: genre_text_Style.copyWith(
@@ -107,27 +110,33 @@ class BookSeatScreen extends StatelessWidget {
                       ),
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(
                         10,
                         (index1) => Container(
-                          margin: EdgeInsets.only(bottom: 10.w),
+                          margin: index1 != 9
+                              ? EdgeInsets.only(bottom: 10.w)
+                              : const EdgeInsets.only(bottom: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
                                 3,
-                                (index) => Container(
-                                      margin: EdgeInsets.only(left: 5.w),
-                                      child: Icon(
-                                        Icons.monitor_rounded,
-                                        size: 11.h,
-                                        color: index1 % 9 != 0
-                                            ? index % 6 == 0
-                                                ? AppColors.light_blue
-                                                : AppColors.light_grey
-                                            : AppColors.purpleColor,
-                                      ),
+                                (index) => Row(
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(left: 5.w),
+                                          child: Icon(
+                                            Icons.monitor_rounded,
+                                            size: 11.h,
+                                            color: index1 % 9 != 0
+                                                ? index % 6 == 0
+                                                    ? AppColors.light_blue
+                                                    : AppColors.light_grey
+                                                : AppColors.purpleColor,
+                                          ),
+                                        ),
+                                      ],
                                     )),
                           ),
                         ),
@@ -137,12 +146,14 @@ class BookSeatScreen extends StatelessWidget {
                       width: 20.w,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(
                         10,
-                        (index) => Container(
-                          margin: EdgeInsets.only(bottom: 10.w),
+                        (index1) => Container(
+                          margin: index1 != 9
+                              ? EdgeInsets.only(bottom: 10.w)
+                              : const EdgeInsets.only(bottom: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
@@ -167,12 +178,14 @@ class BookSeatScreen extends StatelessWidget {
                       width: 20.w,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(
                         10,
                         (index1) => Container(
-                          margin: EdgeInsets.only(bottom: 10.w),
+                          margin: index1 != 9
+                              ? EdgeInsets.only(bottom: 10.w)
+                              : const EdgeInsets.only(bottom: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
@@ -351,33 +364,38 @@ class BookSeatScreen extends StatelessWidget {
                   SizedBox(
                     width: 10.w,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.light_grey.withOpacity(0.3),
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
+                  Container(
+                    height: 46,
+                    constraints: BoxConstraints(maxHeight: 46.w),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.light_grey.withOpacity(0.3),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        fixedSize: Size(108.w, 50.h),
                       ),
-                      fixedSize: Size(108.w, 50.h),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            'Total Price',
+                            style: details_overview_text_Style.copyWith(
+                                color: Colors.black),
+                            maxLines: 1,
+                          ),
+                          AutoSizeText(
+                            '\$ 50',
+                            style: button_text_Style.copyWith(
+                                fontSize: 14.sp,
+                                color: Colors.black,
+                                fontFamily: 'Poppins Bold'),
+                          ),
+                        ],
+                      ),
+                      onPressed: () {},
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Total Price',
-                          style: details_overview_text_Style.copyWith(
-                              color: Colors.black),
-                        ),
-                        Text(
-                          '\$ 50',
-                          style: button_text_Style.copyWith(
-                              fontSize: 17.sp,
-                              color: Colors.black,
-                              fontFamily: 'Poppins Bold'),
-                        ),
-                      ],
-                    ),
-                    onPressed: () {},
                   ),
                   SizedBox(
                     width: 10.w,
