@@ -378,11 +378,12 @@ class BookSeatScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        AutoSizeText(
-                          'Total Price',
-                          style: details_overview_text_Style.copyWith(
-                              color: Colors.black),
-                          maxLines: 1,
+                        FittedBox(
+                          child: Text(
+                            'Total Price',
+                            style: details_overview_text_Style.copyWith(
+                                color: Colors.black),
+                          ),
                         ),
                         AutoSizeText(
                           '\$ 50',
