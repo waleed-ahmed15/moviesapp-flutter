@@ -43,15 +43,17 @@ class _SplashScreenState extends State<SplashScreen>
               child: AnimatedBuilder(
                 animation: _animationController,
                 child: const SizedBox(
-                    width: 200,
-                    height: 200,
                     child: Image(
-                      image: AssetImage("assets/images/movie-clapper-open.png"),
-                    )),
+                  image: AssetImage(
+                    "assets/images/movie-clapper-open.png",
+                  ),
+                  height: 50,
+                  width: 50,
+                )),
                 builder: (BuildContext context, Widget? child) {
                   // print(_animationController.value);
                   return Transform.rotate(
-                    angle: _animationController.value * 3,
+                    angle: _animationController.value * 5,
                     child: child,
                   );
                 },
