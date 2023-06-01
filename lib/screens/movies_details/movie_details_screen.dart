@@ -33,113 +33,122 @@ class MovieDetailsScreen extends StatelessWidget {
               ),
               height: 466.h,
               width: double.infinity,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 64.h,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    end: Alignment.center,
+                    begin: Alignment.bottomCenter,
+                    colors: [Colors.black, Colors.transparent],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 15.w,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                          size: 20.h,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 64.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 15.w,
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 3.0.w),
-                        child: Text(
-                          'Watch',
-                          style: title_text_Style.copyWith(
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.w500,
+                        IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_ios,
                             color: Colors.white,
+                            size: 20.h,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 180.h,
-                  ),
-                  Text(
-                    'In Theatres December 22, 2021',
-                    style: title_text_Style.copyWith(
-                        color: Colors.white, letterSpacing: 1),
-                  ),
-                  SizedBox(
-                    height: 15.h,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => const SelectSeatScreen());
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(243.w, 50.h),
-                      backgroundColor: AppColors.light_blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    child: Text(
-                      'Get Tickets',
-                      style: button_text_Style.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await Get.find<MoviesController>().getMovieVideos(
-                          MoviesController.currentMovieDetails['id']
-                              .toString());
-
-                      Get.to(() => const YoutubePlayerScreen());
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(243.w, 50.h),
-                      backgroundColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          color: AppColors.light_blue,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.play_arrow_rounded,
-                            color: Colors.white),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          'Watch Trailer',
-                          style: button_text_Style.copyWith(
-                            color: Colors.white,
+                        Padding(
+                          padding: EdgeInsets.only(top: 3.0.w),
+                          child: Text(
+                            'Watch',
+                            style: title_text_Style.copyWith(
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  )
-                ],
+                    SizedBox(
+                      height: 180.h,
+                    ),
+                    Text(
+                      'In Theatres December 22, 2021',
+                      style: title_text_Style.copyWith(
+                          color: Colors.white, letterSpacing: 1),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(() => const SelectSeatScreen());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(243.w, 50.h),
+                        backgroundColor: AppColors.light_blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Text(
+                        'Get Tickets',
+                        style: button_text_Style.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        await Get.find<MoviesController>().getMovieVideos(
+                            MoviesController.currentMovieDetails['id']
+                                .toString());
+
+                        Get.to(() => const YoutubePlayerScreen());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(243.w, 50.h),
+                        backgroundColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: AppColors.light_blue,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.play_arrow_rounded,
+                              color: Colors.white),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            'Watch Trailer',
+                            style: button_text_Style.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
