@@ -22,9 +22,12 @@ void main() {
           () async {
         const moviesId = '60565';
         when(() => mockHTTPClient.get(
-                Uri.parse('${AppConstants.baseURL}/3/movie/$moviesId/videos')))
-            .thenAnswer((invocation) async {
-          return Future.value(Response(
+                Uri.parse('${AppConstants.baseURL}/3/movie/$moviesId/videos'),
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': AppConstants.token
+                })).thenAnswer((invocation) async {
+          return Response(
             '''
               {
     "id": 60565,
@@ -45,12 +48,29 @@ void main() {
 }
             ''',
             200,
-          ));
+          );
         });
 
         final movieVideos = await moviesController.getMovieVideos(moviesId);
         expect(movieVideos, isA<MovieVideosModel>());
       });
+
+      test(
+          'when response status code is not 200 for get movies method',
+          () => {
+                when(() => mockHTTPClient
+                        .get(
+                            Uri.parse(
+                                '${AppConstants.baseURL}/3/movie/60565/videos'),
+                            headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': AppConstants.token
+                        })).thenAnswer((invocation) async {
+                  return Response('{}', 404);
+                })
+              });
     });
+
+    // test case for whne response is not 200 for get movie videos
   });
 }

@@ -134,13 +134,11 @@ class MoviesController extends GetxController {
         if (element['type'] == 'Trailer') {
           trailerId = element['key'];
           print(trailerId);
-
-          return MovieVideosModel.fromJson(jsonDecode(response.body));
         }
       });
+      return MovieVideosModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('failed to get movie videos');
     }
-    return MovieVideosModel.fromJson(jsonDecode(response.body));
   }
 }
