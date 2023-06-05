@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:moviesapp/models/movies_details_model.dart';
 import 'package:moviesapp/models/movies_video_model.dart';
 import 'package:moviesapp/utils/app_constants.dart';
 import 'package:http/http.dart' as http;
@@ -87,31 +88,28 @@ class MoviesController extends GetxController {
   }
 
   //get movie details by movie Id;
-  Future<void> getMovieDetails(String movieId) async {
-    try {
-      Uri url = Uri.parse('${AppConstants.baseURL}/3/movie/$movieId');
-      var response = await client.get(
-        url,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': AppConstants.token
-        },
-      );
-      if (response.statusCode == 200) {
-        print('success');
-        print(response.body);
-        currentMovieDetails.clear();
-        currentMovieDetails = jsonDecode(response.body);
-        print(currentMovieDetails['original_title']);
-        print(currentMovieDetails['video']);
-      } else {
-        print('failed');
-        print(response.body);
-        // return true;
-      }
-    } catch (e) {
-      print('failed to get movie details');
-      print(e);
+  Future<MovieDetailsModel> getMovieDetails(String movieId) async {
+    Uri url = Uri.parse('${AppConstants.baseURL}/3/movie/$movieId');
+    var response = await client.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': AppConstants.token
+      },
+    );
+    if (response.statusCode == 200) {
+      print('success');
+      print(response.body);
+      currentMovieDetails.clear();
+      currentMovieDetails = jsonDecode(response.body);
+      print(currentMovieDetails['original_title']);
+      print(currentMovieDetails['video']);
+      return MovieDetailsModel.fromJson(jsonDecode(response.body));
+    } else {
+      print('failed');
+      print(response.body);
+      throw Exception('failed to get movie details');
+      // return true;
     }
   }
 
