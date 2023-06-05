@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:moviesapp/models/UpcomingMovies_model.dart';
 import 'package:moviesapp/models/movies_details_model.dart';
 import 'package:moviesapp/models/movies_video_model.dart';
 import 'package:moviesapp/utils/app_constants.dart';
@@ -23,34 +24,30 @@ class MoviesController extends GetxController {
     getUpcomingMovies().then((value) => print('done'));
   }
 
-  Future<void> getUpcomingMovies() async {
-    try {
-      Uri url = Uri.parse('${AppConstants.baseURL}/3/movie/upcoming');
-      var response = await client.get(
-        url,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': AppConstants.token
-        },
-      );
+  Future<UpcomingMoviesModel> getUpcomingMovies() async {
+    Uri url = Uri.parse('${AppConstants.baseURL}/3/movie/upcoming');
+    var response = await client.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': AppConstants.token
+      },
+    );
 
-      if (response.statusCode == 200) {
-        print('success');
-        print(response.body);
-        upcomingMovies.clear();
-        upcomingMovies = jsonDecode(response.body)['results'];
-        print(upcomingMovies[0]['original_title']);
-        update();
-        isLoadingUpcommingMovies = false;
-        // return false;
-      } else {
-        print('failed');
-        print(response.body);
-        // return true;
-      }
-    } catch (e) {
-      print('failed to get upcomming movies');
-      print(e);
+    if (response.statusCode == 200) {
+      print('success');
+      print(response.body);
+      upcomingMovies.clear();
+      upcomingMovies = jsonDecode(response.body)['results'];
+      print(upcomingMovies[0]['original_title']);
+      update();
+      isLoadingUpcommingMovies = false;
+      return UpcomingMoviesModel.fromJson(jsonDecode(response.body));
+    } else {
+      print('failed');
+      print(response.body);
+      throw Exception('failed to get upcomming movies');
+
       // return true;
     }
   }

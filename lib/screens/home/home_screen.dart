@@ -50,35 +50,40 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Screens.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
+      child: WillPopScope(
+        onWillPop: () {
+          return Future.value(false);
+        },
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: Screens.elementAt(_selectedIndex),
           ),
-          child: Container(
-            height: 75.h,
-            decoration: const BoxDecoration(),
-            child: BottomNavigationBar(
-              showUnselectedLabels: true,
-              showSelectedLabels: true,
-              type: BottomNavigationBarType.fixed,
-              items: List.generate(
-                _icons.length,
-                (index) => BottomNavigationBarItem(
-                  icon: Icon(_icons[index]),
-                  label: _labelOptions[index],
+          bottomNavigationBar: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.r),
+              topRight: Radius.circular(20.r),
+            ),
+            child: Container(
+              height: 75.h,
+              decoration: const BoxDecoration(),
+              child: BottomNavigationBar(
+                showUnselectedLabels: true,
+                showSelectedLabels: true,
+                type: BottomNavigationBarType.fixed,
+                items: List.generate(
+                  _icons.length,
+                  (index) => BottomNavigationBarItem(
+                    icon: Icon(_icons[index]),
+                    label: _labelOptions[index],
+                  ),
                 ),
+                currentIndex: _selectedIndex,
+                backgroundColor: AppColors.navbarColor,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.grey,
+                onTap: _onItemTapped,
               ),
-              currentIndex: _selectedIndex,
-              backgroundColor: AppColors.navbarColor,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.grey,
-              onTap: _onItemTapped,
             ),
           ),
         ),

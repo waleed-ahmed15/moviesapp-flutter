@@ -1,7 +1,7 @@
 class MovieDetailsModel {
   bool? adult;
   String? backdropPath;
-  Null? belongsToCollection;
+  String? belongsToCollection;
   int? budget;
   List<Genres>? genres;
   String? homepage;
@@ -55,7 +55,7 @@ class MovieDetailsModel {
   MovieDetailsModel.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
-    belongsToCollection = json['belongs_to_collection'];
+    belongsToCollection = json['belongs_to_collection']==null?"": "";
     budget = json['budget'];
     if (json['genres'] != null) {
       genres = <Genres>[];
